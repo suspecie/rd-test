@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomizationService } from '../customization.service';
+import { Engine } from '../models/engine';
 
 @Component({
   selector: 'app-engine',
@@ -8,10 +10,17 @@ import { Component, OnInit } from '@angular/core';
 export class EngineComponent implements OnInit {
 
   public colorLink = '/color';
+  public engines: Engine[];
 
-  constructor() { }
+  constructor(private service: CustomizationService) { }
 
   ngOnInit() {
+    this.service.listEngines()
+      .subscribe(
+        (resp) => {
+          this.engines = resp;
+        }
+      );
   }
 
 }
