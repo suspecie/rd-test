@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WheelsComponent implements OnInit {
 
+  public summaryLink = '/summary';
+  
   constructor() { }
 
   ngOnInit() {

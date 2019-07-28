@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EngineComponent implements OnInit {
 
+  public colorLink = '/color';
+
   constructor() { }
 
   ngOnInit() {
