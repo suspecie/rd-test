@@ -1,6 +1,16 @@
-<p>engine works!</p>
-<div *ngFor="let engine of engines">
-    <p> {{ engine.type }}</p>
-</div>
-<app-footer [nextPage]="colorLink"></app-footer>
+<span> car image</span>
 
+<h2>Engine</h2>
+
+<table>
+    <tr *ngFor="let engine of engines">
+        <td>{{ engine.kwh }} {{ engine.type }}</td>
+        <td> {{ engine.kwh }} kwh</td>
+        <td>{{ engine.range }} miles range</td>
+        <td>
+            <input type="radio" id="{{ engine.id }}" name="{{ engine.id }}" value="{{ engine.id }">
+        </td>
+    </tr>
+</table>
+
+<app-footer [nextPage]="colorLink"></app-footer>

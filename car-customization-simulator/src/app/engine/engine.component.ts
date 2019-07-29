@@ -19,6 +19,7 @@ export class EngineComponent implements OnInit {
       .subscribe(
         (resp) => {
           this.engines = resp;
+          console.log('engines', this.engines);
         }
       );
   }
