@@ -1,14 +1,14 @@
-<span> car image</span>
+<img [src]="imageURL" alt="This is representative image of the engine."> 
 
 <h2>Engine</h2>
 
 <table>
-    <tr *ngFor="let engine of engines">
+    <tr *ngFor="let engine of engines" (click)="changeChoice(engine)">
         <td>{{ engine.kwh }} {{ engine.type }}</td>
         <td> {{ engine.kwh }} kwh</td>
         <td>{{ engine.range }} miles range</td>
         <td>
-            <input type="radio" id="{{ engine.id }}" name="{{ engine.id }}" value="{{ engine.id }">
+            <input type="radio" id="engine-{{ engine.id }}" name="engine" value="{{ engine.id }}">
         </td>
     </tr>
 </table>

@@ -11,10 +11,21 @@ export class EngineComponent implements OnInit {
 
   public colorLink = '/color';
   public engines: Engine[];
+  public imageURL = '';
 
-  constructor(private service: CustomizationService) { }
+  constructor(
+    private service: CustomizationService
+  ) { }
 
   ngOnInit() {
+    this.callListEngines();
+  }
+
+  public changeChoice(engine:Engine): void {
+    this.imageURL = `../../assets/images/engines/${engine.id}.png`;
+  }
+
+  private callListEngines(): void {
     this.service.listEngines()
       .subscribe(
         (resp) => {
