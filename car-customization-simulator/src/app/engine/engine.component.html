@@ -3,12 +3,12 @@
 <h2>Engine</h2>
 
 <table>
-    <tr *ngFor="let engine of engines" (click)="changeChoice(engine)">
+    <tr *ngFor="let engine of engines; let idx = index" (click)="changeChoice(engine)">
         <td>{{ engine.kwh }} {{ engine.type }}</td>
         <td> {{ engine.kwh }} kwh</td>
         <td>{{ engine.range }} miles range</td>
         <td>
-            <input type="radio" id="engine-{{ engine.id }}" name="engine" value="{{ engine.id }}">
+            <input type="radio" id="engine-{{ engine.id }}" name="engine" value="{{ engine.id }}" [checked]="(idx === 0)">
         </td>
     </tr>
 </table>
