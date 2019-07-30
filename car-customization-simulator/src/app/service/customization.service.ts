@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, publishReplay, refCount } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { Config } from 'protractor';
+import { Config } from '../models/config';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class CustomizationService {
    * and reserve result in variable configs.
    * So cache it once if configs value is false.
    */
-  list(): Observable<Config[]> {
+  list(): Observable<any> {
 
     if (!this.configs) {
       this.configs = this.http.get<Config[]>(this.API_URL)

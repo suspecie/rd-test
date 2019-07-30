@@ -1,11 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { CustomizationService } from '../service/customization.service';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent implements OnInit, OnChanges {
 
   @Input()
   public nextPage = '';
@@ -15,15 +16,36 @@ export class FooterComponent implements OnInit {
 
   public totalPrice = 0;
 
-  constructor() { }
+  constructor(
+    private service: CustomizationService
+  ) { }
 
   ngOnInit() {
+    this.getDefaultPrice();
+  }
+
+  ngOnChanges(): void {
+    console.log('newprice update', this.newPrice);
+    this.updatePrice();
 
   }
 
-  private sumPrices() {
-    const price = 63000; //pegar da api
-    this.totalPrice = price + this.newPrice;
+  private getDefaultPrice(): void {
+    this.service.list()
+      .subscribe(
+        (resp) => {
+          if (resp && resp.price) {
+            this.totalPrice = resp.price;
+          }
+          console.log('price', this.totalPrice);
+        }
+      );
   }
+
+  private updatePrice() {
+    this.totalPrice += this.newPrice;
+    console.log('updateprice', this.totalPrice);
+  }
+
 
 }
