@@ -1,4 +1,6 @@
+import { Customization } from './customization';
+
 export interface Config {
-    componentType: string;
-    show: boolean;
+    componentType: Customization;
+    cached: boolean;
 }

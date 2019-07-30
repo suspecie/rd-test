@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, publishReplay, refCount } from 'rxjs/operators';
-import { Engine } from './models/engine';
 import { Observable } from 'rxjs';
 import { Config } from 'protractor';
 

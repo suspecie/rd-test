@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomizationService } from '../customization.service';
-import { Engine } from '../models/engine';
+import { CustomizationService } from '../service/customization.service';
+import { Engine } from '../models/customization';
 
 @Component({
   selector: 'app-engine',
