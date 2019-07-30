@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomizationService } from '../service/customization.service';
-import { Engine } from '../models/customization';
 
 @Component({
   selector: 'app-engine',
@@ -10,7 +9,7 @@ import { Engine } from '../models/customization';
 export class EngineComponent implements OnInit {
 
   public colorLink = '/color';
-  public engines: Engine[];
+  public engines: any;
   public imageURL = '../../assets/images/engines/1.png';
 
   constructor(
@@ -22,14 +21,14 @@ export class EngineComponent implements OnInit {
 
   }
 
-  public changeChoice(engine: Engine): void {
+  public changeChoice(engine: any): void {
     this.imageURL = `../../assets/images/engines/${engine.id}.png`;
     const selectedEngine = document.getElementById(`engine-${engine.id}`) as HTMLInputElement;
     selectedEngine.checked = true;
   }
 
   private callListEngines(): void {
-    this.service.listEngines()
+    this.service.list()
       .subscribe(
         (resp) => {
           this.engines = resp;

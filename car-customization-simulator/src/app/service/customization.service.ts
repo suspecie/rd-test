@@ -9,25 +9,31 @@ import { Config } from 'protractor';
 })
 export class CustomizationService {
 
-  private readonly API_URL = 'https://next.json-generator.com/api/json/get/41ORKNZDU';
   public configs: Observable<Config[]>;
+  private readonly API_URL = 'https://next.json-generator.com/api/json/get/41ORKNZDU';
 
   constructor(private http: HttpClient) { }
 
-  listEngines(): Observable<any> {
+  /**
+   * This method call API_URL
+   * and reserve result in variable configs.
+   * So cache it once if configs value is false.
+   */
+  list(): Observable<Config[]> {
 
     if (!this.configs) {
-      this.configs = this.http.get<any>(this.API_URL)
+      this.configs = this.http.get<Config[]>(this.API_URL)
       .pipe(
         map((resp) => {
           let newResp = [];
-          if (resp && resp["data"] && resp["data"].engine && resp["data"].engine.items && resp["data"].engine.items.length > 0) {
-            newResp = resp["data"].engine.items;
+          if (resp && resp['data']) {
+            newResp = resp['data'];
           }
+          console.log('newResp list', newResp);
           return newResp;
         }),
-        publishReplay(1),
-        refCount(),
+        publishReplay(1), // this tells Rx to cache the latest emitted
+        refCount(), // and this tells Rx to keep the Observable alive as long as there are any Subscribers
       );
     }
 
@@ -36,6 +42,7 @@ export class CustomizationService {
   }
 
   clearCache() {
+    console.log('entrei no clearCache');
     this.configs = null;
   }
 }
