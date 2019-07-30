@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, publishReplay, refCount } from 'rxjs/operators';
 import { Engine } from './models/engine';
+import { Observable } from 'rxjs';
+import { Config } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +11,14 @@ import { Engine } from './models/engine';
 export class CustomizationService {
 
   private readonly API_URL = 'https://next.json-generator.com/api/json/get/41ORKNZDU';
+  public configs: Observable<Config[]>;
 
   constructor(private http: HttpClient) { }
 
-  listEngines() {
-    return this.http.get<Engine[]>(this.API_URL)
+  listEngines(): Observable<any> {
+
+    if (!this.configs) {
+      this.configs = this.http.get<any>(this.API_URL)
       .pipe(
         map((resp) => {
           let newResp = [];
@@ -22,6 +27,16 @@ export class CustomizationService {
           }
           return newResp;
         }),
+        publishReplay(1),
+        refCount(),
       );
+    }
+
+    return this.configs;
+
+  }
+
+  clearCache() {
+    this.configs = null;
   }
 }
