@@ -1,6 +1,7 @@
 import { Component, OnInit, ɵConsole } from '@angular/core';
 import { CustomizationService } from '../service/customization.service';
 import { ItemsEngine } from '../models/items-engine';
+import { FooterService } from '../service/footer.service';
 
 @Component({
   selector: 'app-engine',
@@ -15,7 +16,8 @@ export class EngineComponent implements OnInit {
   public enginePrice = 0;
 
   constructor(
-    private service: CustomizationService
+    private service: CustomizationService,
+    private footerService: FooterService,
   ) { }
 
   ngOnInit() {
@@ -28,6 +30,11 @@ export class EngineComponent implements OnInit {
     this.changeEngineImage(engine.id);
     this.selectEngine(engine.id);
     this.showEnginePrice(engine.price, engine.id);
+    this.updateFooter(engine.price);
+  }
+
+  private updateFooter(price) {
+    this.footerService.updateValues(price);
   }
 
   private callListEngines(): void {

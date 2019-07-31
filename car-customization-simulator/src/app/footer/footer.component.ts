@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { CustomizationService } from '../service/customization.service';
+import { FooterService } from '../service/footer.service';
 
 @Component({
   selector: 'app-footer',
@@ -19,12 +20,14 @@ export class FooterComponent implements OnInit, OnChanges {
   public totalPrice = 0;
 
   constructor(
-    private service: CustomizationService
+    private service: CustomizationService,
+    private footerService: FooterService,
   ) { }
 
   ngOnInit() {
     console.log('init footer');
     this.getDefaultPrice();
+    console.log('enginePricefooter', this.footerService.getValues());
   }
 
   ngOnChanges(): void {
@@ -53,8 +56,5 @@ export class FooterComponent implements OnInit, OnChanges {
     console.log('engineprice', this.newEnginePrice);
     console.log('totalprice', this.totalPrice);
   }
-
-  
-
 
 }
