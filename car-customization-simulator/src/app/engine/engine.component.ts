@@ -11,9 +11,10 @@ import { FooterService } from '../service/footer.service';
 export class EngineComponent implements OnInit {
 
   public colorLink = '/color';
-  public imageURL = '../../assets/images/engines/1.png';
   public engines = [];
   public enginePrice = 0;
+  public imageURL: string;
+  public engineModel: string;
 
   constructor(
     private service: CustomizationService,
@@ -30,11 +31,12 @@ export class EngineComponent implements OnInit {
     this.changeEngineImage(engine.id);
     this.selectEngine(engine.id);
     this.showEnginePrice(engine.price, engine.id);
-    this.updateFooter(engine.price);
+    this.updateFooter(engine.price, engine.kwh, engine.type);
   }
 
-  private updateFooter(price) {
-    this.footerService.updateValues(price);
+  private updateFooter(price: number, kwh: number, type: string) {
+    this.engineModel = `${kwh} ${type}`;
+    this.footerService.updateValues(price, this.engineModel);
   }
 
   private callListEngines(): void {
@@ -43,6 +45,8 @@ export class EngineComponent implements OnInit {
         (resp) => {
           if (resp && resp.engine && resp.engine.items && resp.engine.items.length > 0) {
             this.engines = resp.engine.items;
+            this.imageURL = `../../assets/images/engines/${resp.engine.items[0].id}.png`;
+            this.engineModel = `${resp.engine.items[0].kwh} ${resp.engine.items[0].type}`;
           }
         }
       );
@@ -52,6 +56,7 @@ export class EngineComponent implements OnInit {
     const selectedEngine = document.getElementById(`engine-${id}`) as HTMLInputElement;
     selectedEngine.checked = true;
   }
+
 
   private changeEngineImage(id: number): void {
     this.imageURL = `../../assets/images/engines/${id}.png`;

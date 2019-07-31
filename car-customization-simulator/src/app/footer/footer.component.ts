@@ -15,8 +15,10 @@ export class FooterComponent implements OnInit, OnChanges {
   @Input()
   public newEnginePrice = 0;
 
-  public defaultPrice = 0;
+  @Input()
+  public newEngineModel = '';
 
+  public defaultPrice = 0;
   public totalPrice = 0;
 
   constructor(
@@ -25,14 +27,11 @@ export class FooterComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit() {
-    console.log('init footer');
+    this.getLastChoices();
     this.getDefaultPrice();
-    console.log('enginePricefooter', this.footerService.getValues());
   }
 
   ngOnChanges(): void {
-    console.log('change footer');
-
     console.log('newprice update', this.newEnginePrice);
     this.updatePrice();
 
@@ -55,6 +54,15 @@ export class FooterComponent implements OnInit, OnChanges {
     this.totalPrice = this.defaultPrice + this.newEnginePrice ;
     console.log('engineprice', this.newEnginePrice);
     console.log('totalprice', this.totalPrice);
+  }
+
+  private getLastChoices(): void {
+    const lastFooterValues = this.footerService.getValues();
+    if (lastFooterValues) {
+      this.newEnginePrice = lastFooterValues.enginePrice;
+      this.newEngineModel = lastFooterValues.engineModel;
+      console.log('enginePricefooter', lastFooterValues.enginePrice);
+    }
   }
 
 }
