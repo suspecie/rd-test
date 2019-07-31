@@ -50,12 +50,6 @@ export class FooterComponent implements OnInit, OnChanges {
       );
   }
 
-  private updatePrice() {
-    this.totalPrice = this.defaultPrice + this.newEnginePrice ;
-    console.log('engineprice', this.newEnginePrice);
-    console.log('totalprice', this.totalPrice);
-  }
-
   private getLastChoices(): void {
     const lastFooterValues = this.footerService.getValues();
     if (lastFooterValues) {
@@ -63,6 +57,12 @@ export class FooterComponent implements OnInit, OnChanges {
       this.newEngineModel = lastFooterValues.engineModel;
       console.log('enginePricefooter', lastFooterValues.enginePrice);
     }
+  }
+
+  private updatePrice() {
+    this.totalPrice = this.defaultPrice + this.newEnginePrice ;
+    console.log('engineprice', this.newEnginePrice);
+    console.log('totalprice', this.totalPrice);
   }
 
 }

@@ -34,11 +34,6 @@ export class EngineComponent implements OnInit {
     this.updateFooter(engine.price, engine.kwh, engine.type);
   }
 
-  private updateFooter(price: number, kwh: number, type: string) {
-    this.engineModel = `${kwh} ${type}`;
-    this.footerService.updateValues(price, this.engineModel);
-  }
-
   private callListEngines(): void {
     this.service.list()
       .subscribe(
@@ -52,14 +47,13 @@ export class EngineComponent implements OnInit {
       );
   }
 
+  private changeEngineImage(id: number): void {
+    this.imageURL = `../../assets/images/engines/${id}.png`;
+  }
+
   private selectEngine(id: number): void {
     const selectedEngine = document.getElementById(`engine-${id}`) as HTMLInputElement;
     selectedEngine.checked = true;
-  }
-
-
-  private changeEngineImage(id: number): void {
-    this.imageURL = `../../assets/images/engines/${id}.png`;
   }
 
   private showEnginePrice(price: number, id: number): void {
@@ -75,4 +69,10 @@ export class EngineComponent implements OnInit {
       }
     });
   }
+
+  private updateFooter(price: number, kwh: number, type: string) {
+    this.engineModel = `${kwh} ${type}`;
+    this.footerService.updateValues(price, this.engineModel);
+  }
+
 }
