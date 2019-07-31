@@ -29,7 +29,6 @@ export class CustomizationService {
           if (resp && resp['data']) {
             newResp = resp['data'];
           }
-          console.log('newResp list', newResp);
           return newResp;
         }),
         publishReplay(1), // this tells Rx to cache the latest emitted

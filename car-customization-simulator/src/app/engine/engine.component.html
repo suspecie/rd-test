@@ -9,8 +9,9 @@
         <td>{{ engine.range }} miles range</td>
         <td>
             <input type="radio" id="engine-{{ engine.id }}" name="engine" value="{{ engine.id }}" [checked]="(idx === 0)">
+            <p class="price not-show-price" id="price-{{ engine.id }}">+{{ engine.price | currency }}</p>
         </td>
     </tr>
 </table>
 
-<app-footer [nextPage]="colorLink" [newPrice]="enginePrice"></app-footer>
+<app-footer [nextPage]="colorLink" [newEnginePrice]="enginePrice"></app-footer>
