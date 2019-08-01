@@ -11,9 +11,9 @@
 
 <h3>{{ description }}</h3>
 
-<button *ngFor="let color of colors" (click)="changeColor(color)">
+<button *ngFor="let color of colors" (click)="changeColor(color.id, color.label, color.price)">
     <img src="../../assets/images/colors/dot-{{ color.id }}.png" alt="Button to choice color {{ color.label }}.">
 </button>
 
 
-<app-footer [nextPage]="wheelsLink"></app-footer>
+<app-footer [nextPage]="wheelsLink" [newColorImage]="colorImage"></app-footer>

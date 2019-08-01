@@ -2,4 +2,5 @@
 <p>{{ totalPrice | currency }}</p>
 <p> Model R</p>
 <p>{{ newEngineModel }}</p>
+<img [src]="newColorImage" alt="Miniature of the chosen color" *ngIf="newColorImage">
 <a routerLink="{{ nextPage }}">Next</a>

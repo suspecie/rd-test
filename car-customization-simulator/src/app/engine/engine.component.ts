@@ -73,7 +73,7 @@ export class EngineComponent implements OnInit {
 
   private updateFooter(price: number, kwh: number, type: string) {
     this.engineModel = `${kwh} ${type}`;
-    this.footerService.updateValues(price, this.engineModel);
+    this.footerService.updateValues(price, this.engineModel, null, null);
   }
 
 }

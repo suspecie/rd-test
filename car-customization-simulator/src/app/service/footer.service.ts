@@ -10,10 +10,17 @@ export class FooterService {
   constructor() { }
 
 
-  updateValues(selectedEnginePrice: number, selectedEngineModel: string): any {
+  updateValues(
+    selectedEnginePrice: number,
+    selectedEngineModel: string,
+    selectedColorImage: string,
+    selectedColorPrice: number,
+  ): any {
     this.footerValues = {
       enginePrice: selectedEnginePrice,
       engineModel: selectedEngineModel,
+      colorImage: selectedColorImage,
+      colorPrice: selectedColorPrice,
     };
   }
 
