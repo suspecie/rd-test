@@ -1,2 +1,15 @@
-<p>color works!</p>
+<img src="" alt="This is representative image of the car with color choice.">
+<p>xxx</p>
+<p>xxx</p>
+
+
+<h2>Color</h2>
+
+<h3>{{ description }}</h3>
+
+<div *ngFor="let color of colors">
+    <img src="../../assets/images/colors/dot-{{ color.id }}.png" alt="Button to choice color {{ color.label }}.">
+</div>
+
+
 <app-footer [nextPage]="wheelsLink"></app-footer>
