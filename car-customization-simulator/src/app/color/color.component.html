@@ -1,15 +1,19 @@
-<img src="" alt="This is representative image of the car with color choice.">
-<p>xxx</p>
-<p>xxx</p>
+<figure>
+    <img [src]="urlCarImage" alt="This is representative image of the car with color choice.">
+    <figcaption>
+        <p>{{ colorName }}</p>
+        <p>{{ colorPrice > 0 ? '+' + (colorPrice | currency) : 'Included' }}</p>
+    </figcaption>
+</figure>
 
 
 <h2>Color</h2>
 
 <h3>{{ description }}</h3>
 
-<div *ngFor="let color of colors">
+<button *ngFor="let color of colors" (click)="changeColor(color)">
     <img src="../../assets/images/colors/dot-{{ color.id }}.png" alt="Button to choice color {{ color.label }}.">
-</div>
+</button>
 
 
 <app-footer [nextPage]="wheelsLink"></app-footer>
