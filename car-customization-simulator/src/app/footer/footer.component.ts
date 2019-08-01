@@ -21,6 +21,9 @@ export class FooterComponent implements OnInit, OnChanges {
   @Input()
   public newColorImage = '';
 
+  @Input()
+  public newColorPrice = 0;
+
   public defaultPrice = 0;
   public totalPrice = 0;
 
@@ -59,13 +62,15 @@ export class FooterComponent implements OnInit, OnChanges {
       this.newEnginePrice = lastFooterValues.enginePrice;
       this.newEngineModel = lastFooterValues.engineModel;
       this.newColorImage = lastFooterValues.colorImage;
-      console.log('enginePricefooter', lastFooterValues.enginePrice);
+      this.newColorPrice = lastFooterValues.colorPrice;
+      console.log('newColorPrice', lastFooterValues.colorPrice);
     }
   }
 
   private updatePrice() {
-    this.totalPrice = this.defaultPrice + this.newEnginePrice;
+    this.totalPrice = this.defaultPrice + this.newEnginePrice + this.newColorPrice;
     console.log('engineprice', this.newEnginePrice);
+    console.log('colorprice', this.newColorPrice);
     console.log('totalprice', this.totalPrice);
   }
 
