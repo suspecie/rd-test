@@ -42,6 +42,7 @@ export class EngineComponent implements OnInit {
             this.engines = resp.engine.items;
             this.imageURL = `../../assets/images/engines/${resp.engine.items[0].id}.png`;
             this.engineModel = `${resp.engine.items[0].kwh} ${resp.engine.items[0].type}`;
+            this.updateFooter(resp.engine.items[0].price, resp.engine.items[0].kwh, resp.engine.items[0].type);
           }
         }
       );
