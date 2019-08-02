@@ -12,7 +12,7 @@
     <tbody>
       <tr>
         <th>{{ engineName }}</th>
-        <td>{{ enginePrice | currency }}</td>
+        <td>{{ enginePrice > 0 ? '+' + (enginePrice | currency) : 'Included' }}</td>
       </tr>
       <tr>
         <th>{{ colorName }}</th>
