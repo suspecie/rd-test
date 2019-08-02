@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomizationService } from '../service/customization.service';
+import { FooterService } from '../service/footer.service';
 
 @Component({
   selector: 'app-wheels',
@@ -10,9 +11,13 @@ export class WheelsComponent implements OnInit {
 
   public summaryLink = '/summary';
   public wheels = [];
+  public wheelImage: string;
+  public wheelPrice: number;
+
 
   constructor(
     private service: CustomizationService,
+    private footerService: FooterService,
   ) { }
 
   ngOnInit() {
@@ -20,8 +25,10 @@ export class WheelsComponent implements OnInit {
   }
 
   public changeChoice(id: number, price: number): void {
+    this.setFooterValues(id, price);
     this.changeImgOpacity(id);
     this.showFigure(id);
+    this.updateFooter();
   }
 
   private callListWheels(): void {
@@ -30,15 +37,35 @@ export class WheelsComponent implements OnInit {
         (resp) => {
           if (resp && resp.wheels && resp.wheels.items && resp.wheels.items.length > 0) {
             this.wheels = resp.wheels.items;
+            this.setFooterValues(resp.wheels.items[0].id, resp.wheels.items[0].price);
           }
         }
       );
   }
 
-  private changeImgOpacity(id: number): void {
-    let imgEl = document.querySelectorAll('img') as NodeListOf<HTMLElement>;
-    imgEl.forEach((item) => {
+  private updateFooter(): void {
+    const lastFooterValues = this.footerService.getValues();
+    if (lastFooterValues) {
+      this.footerService
+        .updateValues(
+          lastFooterValues.enginePrice,
+          lastFooterValues.engineModel,
+          lastFooterValues.colorImage,
+          lastFooterValues.colorPrice,
+          this.wheelImage,
+          this.wheelPrice,
+        );
+    }
+  }
 
+  private setFooterValues(id: number, price: number): void {
+    this.wheelImage = `../../assets/images/wheels/${id}.png`;
+    this.wheelPrice = price;
+  }
+
+  private changeImgOpacity(id: number): void {
+    let imgEl = document.querySelectorAll('.wheel-img') as NodeListOf<HTMLElement>;
+    imgEl.forEach((item) => {
       if (item.id === `wheel-img-${id}`) {
         const wheelImg = document.getElementById(`wheel-img-${id}`) as HTMLElement;
         wheelImg.classList.add('selected');

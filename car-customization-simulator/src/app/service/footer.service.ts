@@ -15,12 +15,16 @@ export class FooterService {
     selectedEngineModel: string,
     selectedColorImage: string,
     selectedColorPrice: number,
+    selectedWheelImage: string,
+    selectedWheelPrice: number,
   ): any {
     this.footerValues = {
       enginePrice: selectedEnginePrice,
       engineModel: selectedEngineModel,
       colorImage: selectedColorImage,
       colorPrice: selectedColorPrice,
+      wheelImage: selectedWheelImage,
+      wheelPrice: selectedWheelPrice,
     };
   }
 

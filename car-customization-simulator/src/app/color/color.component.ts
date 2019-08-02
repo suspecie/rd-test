@@ -59,6 +59,8 @@ export class ColorComponent implements OnInit {
           lastFooterValues.engineModel,
           this.colorImage,
           this.colorPrice,
+          null,
+          null,
         );
     }
   }
