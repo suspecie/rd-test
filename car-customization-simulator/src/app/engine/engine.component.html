@@ -1,15 +1,15 @@
-<img [src]="imageURL" alt="This is representative image of the engine."> 
+<img [src]="imageURL" alt="This is representative image of the engine." *ngIf="imageURL"> 
 
 <h2>Engine</h2>
 
 <table>
     <tr *ngFor="let engine of engines; let idx = index" (click)="changeChoice(engine)">
-        <td>{{ engine.kwh }} {{ engine.type }}</td>
-        <td> {{ engine.kwh }} kwh</td>
-        <td>{{ engine.range }} miles range</td>
+        <td>{{ engine?.kwh }} {{ engine?.type }}</td>
+        <td> {{ engine?.kwh }} kwh</td>
+        <td>{{ engine?.range }} miles range</td>
         <td>
-            <input type="radio" id="engine-{{ engine.id }}" name="engine" value="{{ engine.id }}" [checked]="(idx === 0)">
-            <p class="price not-show-price" id="price-{{ engine.id }}">+{{ engine.price | currency }}</p>
+            <input type="radio" id="engine-{{ engine?.id }}" name="engine" value="{{ engine?.id }}" [checked]="(idx === 0)">
+            <p class="price not-show-price" id="price-{{ engine?.id }}">+{{ engine?.price | currency }}</p>
         </td>
     </tr>
 </table>

@@ -11,8 +11,8 @@
 
 <h3>{{ description }}</h3>
 
-<button [ngClass]="{'not-button-selected': i > 0, 'button-selected': i === 0}" id="dot-{{ color.id }}" *ngFor="let color of colors; let i = index" (click)="changeColor(color.id, color.label, color.price)">
-    <img src="../../assets/images/colors/dot-{{ color.id }}.png" alt="Button to choice color {{ color.label }}.">
+<button [ngClass]="{'not-button-selected': i > 0, 'button-selected': i === 0}" id="dot-{{ color?.id }}" *ngFor="let color of colors; let i = index" (click)="changeColor(color?.id, color?.label, color?.price)">
+    <img src="../../assets/images/colors/dot-{{ color?.id }}.png" alt="Button to choice color {{ color?.label }}.">
 </button>
 
 
