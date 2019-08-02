@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomizationService } from '../service/customization.service';
 import { FooterService } from '../service/footer.service';
+import { SummaryService } from '../service/summary.service';
 
 @Component({
   selector: 'app-wheels',
@@ -18,17 +19,19 @@ export class WheelsComponent implements OnInit {
   constructor(
     private service: CustomizationService,
     private footerService: FooterService,
+    private summaryService: SummaryService,
   ) { }
 
   ngOnInit() {
     this.callListWheels();
   }
 
-  public changeChoice(id: number, price: number): void {
+  public changeChoice(id: number, price: number, label: string): void {
     this.setFooterValues(id, price);
     this.changeImgOpacity(id);
     this.showFigure(id);
     this.updateFooter();
+    this.updateSummary(label);
   }
 
   private callListWheels(): void {
@@ -37,7 +40,7 @@ export class WheelsComponent implements OnInit {
         (resp) => {
           if (resp && resp.wheels && resp.wheels.items && resp.wheels.items.length > 0) {
             this.wheels = resp.wheels.items;
-            this.setFooterValues(resp.wheels.items[0].id, resp.wheels.items[0].price);
+            this.changeChoice(resp.wheels.items[0].id, resp.wheels.items[0].price, resp.wheels.items[0].label);
           }
         }
       );
@@ -54,6 +57,21 @@ export class WheelsComponent implements OnInit {
           lastFooterValues.colorPrice,
           this.wheelImage,
           this.wheelPrice,
+        );
+    }
+  }
+
+  private updateSummary(label: string): void {
+    const lastSummaryValues = this.summaryService.getValues();
+    if (lastSummaryValues) {
+      this.summaryService
+        .updateValues(
+          lastSummaryValues.engineName,
+          lastSummaryValues.enginePrice,
+          lastSummaryValues.colorName,
+          lastSummaryValues.colorPrice,
+          label,
+          this.wheelPrice
         );
     }
   }

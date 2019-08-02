@@ -15,6 +15,8 @@ export class SummaryComponent implements OnInit {
   public totalPrice = 0;
   public colorName = '';
   public colorPrice = 0;
+  public wheelName = '';
+  public wheelPrice = 0;
 
   constructor(
     private service: CustomizationService,
@@ -44,13 +46,15 @@ export class SummaryComponent implements OnInit {
       this.enginePrice = lastSummaryValues.enginePrice;
       this.colorName = lastSummaryValues.colorName;
       this.colorPrice = lastSummaryValues.colorPrice;
+      this.wheelName = lastSummaryValues.wheelName;
+      this.wheelPrice = lastSummaryValues.wheelPrice;
       this.updatePrice();
       console.log('lastSummaryValues', lastSummaryValues);
     }
   }
 
   private updatePrice(): void {
-    this.totalPrice = this.defaultPrice + this.enginePrice + this.colorPrice;
+    this.totalPrice = this.defaultPrice + this.enginePrice + this.colorPrice + this.wheelPrice;
   }
 
 }
