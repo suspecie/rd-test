@@ -19,6 +19,11 @@ export class WheelsComponent implements OnInit {
     this.callListWheels();
   }
 
+  public changeChoice(id: number, price: number): void {
+    this.changeImgOpacity(id);
+    this.showFigure(id);
+  }
+
   private callListWheels(): void {
     this.service.list()
       .subscribe(
@@ -30,4 +35,34 @@ export class WheelsComponent implements OnInit {
       );
   }
 
+  private changeImgOpacity(id: number): void {
+    let imgEl = document.querySelectorAll('img') as NodeListOf<HTMLElement>;
+    imgEl.forEach((item) => {
+
+      if (item.id === `wheel-img-${id}`) {
+        const wheelImg = document.getElementById(`wheel-img-${id}`) as HTMLElement;
+        wheelImg.classList.add('selected');
+        wheelImg.classList.remove('not-selected');
+      } else {
+        const notSelectedWheelImg = document.getElementById(item.id) as HTMLElement;
+        notSelectedWheelImg.classList.add('not-selected');
+        notSelectedWheelImg.classList.remove('selected');
+      }
+    });
+  }
+
+  private showFigure(id: number): void {
+    let descEl = document.querySelectorAll('figcaption') as NodeListOf<HTMLElement>;
+    descEl.forEach((item) => {
+      if (item.id === `wheel-desc-${id}`) {
+        const wheelDescription = document.getElementById(`wheel-desc-${id}`) as HTMLElement;
+        wheelDescription.classList.add('show');
+        wheelDescription.classList.remove('not-show');
+      } else {
+        const notSelectedWheelDescription = document.getElementById(item.id) as HTMLElement;
+        notSelectedWheelDescription.classList.add('not-show');
+        notSelectedWheelDescription.classList.remove('show');
+      }
+    });
+  }
 }
