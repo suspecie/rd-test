@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CustomizationService } from '../service/customization.service';
 import { ItemsColor } from '../models/items-color';
 import { FooterService } from '../service/footer.service';
+import { SummaryService } from '../service/summary.service';
 
 @Component({
   selector: 'app-color',
@@ -21,6 +22,7 @@ export class ColorComponent implements OnInit {
   constructor(
     private service: CustomizationService,
     private footerService: FooterService,
+    private summaryService: SummaryService,
   ) { }
 
   ngOnInit() {
@@ -35,6 +37,7 @@ export class ColorComponent implements OnInit {
     this.colorPrice = price;
     this.changeColorBackgroundButton(id);
     this.updateFooter();
+    this.updateSummary();
   }
 
   private callListColors(): void {
@@ -61,6 +64,21 @@ export class ColorComponent implements OnInit {
           this.colorPrice,
           null,
           null,
+        );
+    }
+  }
+
+  private updateSummary(): void {
+    const lastSummaryValues = this.summaryService.getValues();
+    if (lastSummaryValues) {
+      this.summaryService
+        .updateValues(
+          lastSummaryValues.engineName,
+          lastSummaryValues.enginePrice,
+          this.colorName,
+          this.colorPrice,
+          null,
+          null
         );
     }
   }

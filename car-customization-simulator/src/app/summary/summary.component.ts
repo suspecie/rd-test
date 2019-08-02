@@ -13,6 +13,8 @@ export class SummaryComponent implements OnInit {
   public engineName = '';
   public enginePrice = 0;
   public totalPrice = 0;
+  public colorName = '';
+  public colorPrice = 0;
 
   constructor(
     private service: CustomizationService,
@@ -40,13 +42,15 @@ export class SummaryComponent implements OnInit {
     if (lastSummaryValues) {
       this.engineName = lastSummaryValues.engineName;
       this.enginePrice = lastSummaryValues.enginePrice;
+      this.colorName = lastSummaryValues.colorName;
+      this.colorPrice = lastSummaryValues.colorPrice;
       this.updatePrice();
       console.log('lastSummaryValues', lastSummaryValues);
     }
   }
 
   private updatePrice(): void {
-    this.totalPrice = this.defaultPrice + this.enginePrice;
+    this.totalPrice = this.defaultPrice + this.enginePrice + this.colorPrice;
   }
 
 }

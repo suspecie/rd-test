@@ -15,8 +15,8 @@
         <td>{{ enginePrice | currency }}</td>
       </tr>
       <tr>
-        <th>color xxx</th>
-        <td>xxx</td>
+        <th>{{ colorName }}</th>
+        <td>{{ colorPrice > 0 ? '+' + (colorPrice | currency) : 'Included' }}</td>
       </tr>
       <tr>
         <th>wheels xxx</th>
