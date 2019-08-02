@@ -2,6 +2,7 @@ import { Component, OnInit, ɵConsole } from '@angular/core';
 import { CustomizationService } from '../service/customization.service';
 import { ItemsEngine } from '../models/items-engine';
 import { FooterService } from '../service/footer.service';
+import { SummaryService } from '../service/summary.service';
 
 @Component({
   selector: 'app-engine',
@@ -19,6 +20,7 @@ export class EngineComponent implements OnInit {
   constructor(
     private service: CustomizationService,
     private footerService: FooterService,
+    private summaryService: SummaryService,
   ) { }
 
   ngOnInit() {
@@ -32,6 +34,7 @@ export class EngineComponent implements OnInit {
     this.selectEngine(engine.id);
     this.showEnginePrice(engine.price, engine.id);
     this.updateFooter(engine.price, engine.kwh, engine.type);
+    this.updateSummary(engine.kwh, engine.type, engine.range, engine.price);
   }
 
   private callListEngines(): void {
@@ -43,6 +46,7 @@ export class EngineComponent implements OnInit {
             this.imageURL = `../../assets/images/engines/${resp.engine.items[0].id}.png`;
             this.engineModel = `${resp.engine.items[0].kwh} ${resp.engine.items[0].type}`;
             this.updateFooter(resp.engine.items[0].price, resp.engine.items[0].kwh, resp.engine.items[0].type);
+            this.updateSummary(resp.engine.items[0].kwh, resp.engine.items[0].type, resp.engine.items[0].range, resp.engine.items[0].price);
           }
         }
       );
@@ -74,6 +78,11 @@ export class EngineComponent implements OnInit {
   private updateFooter(price: number, kwh: number, type: string) {
     this.engineModel = `${kwh} ${type}`;
     this.footerService.updateValues(price, this.engineModel, null, null, null, null);
+  }
+
+  private updateSummary(kwh: number, type: string, range: number, price: number): void {
+    const engineName = `${kwh} ${type} - ${kwh} KWh - ${range} miles range`;
+    this.summaryService.updateValues(engineName, price, null, null, null, null);
   }
 
 }

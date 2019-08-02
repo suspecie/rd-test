@@ -6,13 +6,13 @@
     <thead>
       <tr>
         <th>Starting price</th>
-        <td>xxx</td>
+        <td>{{ defaultPrice | currency }}</td>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <th>engine xxx</th>
-        <td>xxx</td>
+        <th>{{ engineName }}</th>
+        <td>{{ enginePrice | currency }}</td>
       </tr>
       <tr>
         <th>color xxx</th>
@@ -26,7 +26,7 @@
     <tfoot>
         <tr>
           <th>Final Price</th>
-          <td>xxx</td>
+          <td>{{ totalPrice | currency }}</td>
         </tr>
       </tfoot>
   </table>
