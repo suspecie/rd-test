@@ -1,13 +1,11 @@
 <h2>Wheels</h2>
 
-
-<figure>
-    <img [src]="" alt="xxxx Wheels">
+<figure *ngFor="let wheel of wheels">
+    <img src="../../assets/images/wheels/{{ wheel.id }}.png" alt="{{ wheel?.label }} Wheels">
     <figcaption>
-        <p>xxx</p>
-        <p>xxx</p>
+        <p>{{ wheel?.label }}</p>
+        <p>{{ wheel?.price > 0 ? '+' + (wheel?.price | currency) : 'Included' }}</p>
     </figcaption>
 </figure>
-
 
 <app-footer [nextPage]="summaryLink"></app-footer>
