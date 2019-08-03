@@ -17,6 +17,7 @@ export class SummaryComponent implements OnInit {
   public colorPrice = 0;
   public wheelName = '';
   public wheelPrice = 0;
+  public urlCarImage = '';
 
   constructor(
     private service: CustomizationService,
@@ -48,6 +49,8 @@ export class SummaryComponent implements OnInit {
       this.colorPrice = lastSummaryValues.colorPrice;
       this.wheelName = lastSummaryValues.wheelName;
       this.wheelPrice = lastSummaryValues.wheelPrice;
+      this.urlCarImage = `../../assets/images/summary/final-${lastSummaryValues.chosenColor}.png`;
+      console.log('urlcarImage', this.urlCarImage);
       this.updatePrice();
       console.log('lastSummaryValues', lastSummaryValues);
     }

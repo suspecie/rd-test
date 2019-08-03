@@ -70,6 +70,7 @@ export class WheelsComponent implements OnInit {
           lastSummaryValues.enginePrice,
           lastSummaryValues.colorName,
           lastSummaryValues.colorPrice,
+          lastSummaryValues.chosenColor,
           label,
           this.wheelPrice
         );

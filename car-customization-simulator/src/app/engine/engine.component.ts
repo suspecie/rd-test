@@ -82,7 +82,7 @@ export class EngineComponent implements OnInit {
 
   private updateSummary(kwh: number, type: string, range: number, price: number): void {
     const engineName = `${kwh} ${type} - ${kwh} KWh - ${range} miles range`;
-    this.summaryService.updateValues(engineName, price, null, null, null, null);
+    this.summaryService.updateValues(engineName, price, null, null, null, null, null);
   }
 
 }

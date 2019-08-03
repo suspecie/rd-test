@@ -15,6 +15,7 @@ export class SummaryService {
     selectedEnginePrice: number,
     selectedColorName: string,
     selectedColorPrice: number,
+    selectedChosenColor: number,
     selectedWheelName: string,
     selectedWheelPrice: number,
   ): any {
@@ -23,6 +24,7 @@ export class SummaryService {
       enginePrice: selectedEnginePrice,
       colorName: selectedColorName,
       colorPrice: selectedColorPrice,
+      chosenColor: selectedChosenColor,
       wheelName: selectedWheelName,
       wheelPrice: selectedWheelPrice,
     };

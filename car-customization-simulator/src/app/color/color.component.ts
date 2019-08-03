@@ -37,7 +37,7 @@ export class ColorComponent implements OnInit {
     this.colorPrice = price;
     this.changeColorBackgroundButton(id);
     this.updateFooter();
-    this.updateSummary();
+    this.updateSummary(id);
   }
 
   private callListColors(): void {
@@ -68,7 +68,7 @@ export class ColorComponent implements OnInit {
     }
   }
 
-  private updateSummary(): void {
+  private updateSummary(id: number): void {
     const lastSummaryValues = this.summaryService.getValues();
     if (lastSummaryValues) {
       this.summaryService
@@ -77,6 +77,7 @@ export class ColorComponent implements OnInit {
           lastSummaryValues.enginePrice,
           this.colorName,
           this.colorPrice,
+          id,
           null,
           null
         );
