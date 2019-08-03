@@ -14,6 +14,10 @@ export class WheelsComponent implements OnInit {
   public wheels = [];
   public wheelImage: string;
   public wheelPrice: number;
+  public defaultEnginePrice: number;
+  public defaultEngineModel: string;
+  public defaultColorImage: string;
+  public defaultColorPrice: number;
 
 
   constructor(
@@ -38,9 +42,21 @@ export class WheelsComponent implements OnInit {
     this.service.list()
       .subscribe(
         (resp) => {
-          if (resp && resp.wheels && resp.wheels.items && resp.wheels.items.length > 0) {
-            this.wheels = resp.wheels.items;
-            this.changeChoice(resp.wheels.items[0].id, resp.wheels.items[0].price, resp.wheels.items[0].label);
+          if (resp) {
+            if (resp.engine && resp.engine.items && resp.engine.items.length > 0) {
+              this.defaultEnginePrice = resp.engine.items[0].price;
+              this.defaultEngineModel = `${resp.engine.items[0].kwh} ${resp.engine.items[0].type}`;
+            }
+
+            if (resp.color && resp.color && resp.color.items && resp.color.items.length > 0) {
+              this.defaultColorImage = `../../assets/images/colors/dot-${resp.color.items[0].id}.png`;
+              this.defaultColorPrice = resp.color.items[0].price;
+            }
+
+            if (resp.wheels && resp.wheels.items && resp.wheels.items.length > 0) {
+              this.wheels = resp.wheels.items;
+              this.changeChoice(resp.wheels.items[0].id, resp.wheels.items[0].price, resp.wheels.items[0].label);
+            }
           }
         }
       );

@@ -18,6 +18,8 @@ export class ColorComponent implements OnInit {
   public colorName: string;
   public colorPrice: number;
   public colorImage: string;
+  public defaultEnginePrice: number;
+  public defaultEngineModel: string;
 
   constructor(
     private service: CustomizationService,
@@ -44,10 +46,18 @@ export class ColorComponent implements OnInit {
     this.service.list()
       .subscribe(
         (resp) => {
-          if (resp && resp.color && resp.color.items && resp.color.items.length > 0) {
-            this.colors = resp.color.items;
-            this.description = resp.color.description;
-            this.changeColor(resp.color.items[0].id, resp.color.items[0].label, resp.color.items[0].price);
+          if (resp) {
+            if (resp.engine && resp.engine.items && resp.engine.items.length > 0) {
+              this.defaultEnginePrice = resp.engine.items[0].price;
+              this.defaultEngineModel = `${resp.engine.items[0].kwh} ${resp.engine.items[0].type}`;
+            }
+
+            if (resp.color && resp.color && resp.color.items && resp.color.items.length > 0) {
+              this.colors = resp.color.items;
+              this.description = resp.color.description;
+              this.changeColor(resp.color.items[0].id, resp.color.items[0].label, resp.color.items[0].price);
+            }
+
           }
         }
       );
@@ -55,6 +65,7 @@ export class ColorComponent implements OnInit {
 
   private updateFooter(): void {
     const lastFooterValues = this.footerService.getValues();
+    console.log('lastFooterValues', lastFooterValues);
     if (lastFooterValues) {
       this.footerService
         .updateValues(

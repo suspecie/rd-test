@@ -33,8 +33,32 @@ export class SummaryComponent implements OnInit {
     this.service.list()
       .subscribe(
         (resp) => {
-          if (resp && resp.price) {
-            this.defaultPrice = resp.price;
+          if (resp) {
+            if (resp.engine && resp.engine.items && resp.engine.items.length > 0) {
+              this.engineName = `
+              ${resp.engine.items[0].kwh}
+              ${resp.engine.items[0].type} - ${resp.engine.items[0].kwh} KWh - 
+              ${resp.engine.items[0].range} miles range
+              `;
+              this.enginePrice = resp.engine.items[0].price;
+            }
+
+            if (resp.color && resp.color && resp.color.items && resp.color.items.length > 0) {
+              this.colorName = resp.color.items[0].label;
+              this.colorPrice = resp.color.items[0].price;
+              this.urlCarImage = `../../assets/images/summary/final-${resp.color.items[0].id}.png`;
+            }
+
+            if (resp.wheels && resp.wheels.items && resp.wheels.items.length > 0) {
+              this.wheelName = resp.wheels.items[0].label;
+              this.wheelPrice = resp.wheels.items[0].price;
+            }
+
+            if (resp.price) {
+              this.defaultPrice = resp.price;
+            }
+
+            this.updatePrice();
           }
         }
       );
