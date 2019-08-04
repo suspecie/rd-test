@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Saira+Condensed:300,400,50');
+@import url('https://fonts.googleapis.com/css?family=Saira+Condensed:300,400,500');
 
 $red: #ab1725;
 $blue: #0f1c2d;
@@ -21,5 +21,23 @@ body {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+}
+
+img {
+    width: 100%;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 0 20px;
+}
+
+@media screen and (min-width: 768px) {
+    .center {
+       max-width: 1024px;
+       margin: 0 auto;
+    }
 }
 
