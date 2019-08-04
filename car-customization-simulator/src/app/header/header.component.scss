@@ -42,6 +42,11 @@ nav {
     width: 100%;
     border-bottom: solid $red;
     padding-top: 16px;
+    position: absolute;
+    background-color: $white;
+    top: 10px;
+    right: 1px;
+    z-index: 1;
 
     li {
       padding: 16px;
@@ -87,12 +92,12 @@ nav {
       }
 
       li:nth-child(5) {
-          margin-right: 0;
+        margin-right: 0;
       }
 
       li:last-child {
         margin-right: 0;
-    }
+      }
     }
 
     li:first-child {
