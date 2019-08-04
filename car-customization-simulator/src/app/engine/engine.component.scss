@@ -1,3 +1,29 @@
+@import '../../styles.scss';
+
 .not-show-price {
-    display: none;
+  display: none;
+}
+
+h2 {
+  order: 7;
+  font-weight: 300;
+  letter-spacing: 1.83px;
+}
+
+img {
+  order: 8;
+  transform: rotate(-90deg);
+  width: 50%;
+  margin-left: 25%;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 40px;
+
+    tr {
+        background-color: $light-grey;
+        line-height: 75px;
+    }
 }
