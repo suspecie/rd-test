@@ -1,23 +1,41 @@
-button {
+@import '../../styles.scss';
+
+h2 {
+  width: 100%;
+}
+
+
+
+  .not-show {
+    display: none;
+  }
+
+  .show {
+    display: block;
+  }
+
+figure {
+  margin: 140px 0;
+  width: 33.3%;
+
+  button {
     background-color: unset;
     padding: 0;
-    border-radius: 50%;
-    height: 100%;
-    width: 30%;
-}
+    border-color: $white;
+    
+    .not-selected {
+      opacity: 0.5;
+    }
 
-.not-selected {
-    opacity: 0.5;
-}
+    .selected {
+      opacity: 100;
+    }
+  }
 
-.selected {
-    opacity: 100;
-}
-
-.not-show {
-    display: none;
-}
-
-.show {
-    display: block;
+  figcaption {
+      text-align: center;
+      p:last-child {
+          color: $red;
+      }
+  }
 }

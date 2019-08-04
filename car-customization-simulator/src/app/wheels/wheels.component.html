@@ -1,15 +1,21 @@
-<h2>Wheels</h2>
+<div class="container">
+  <h2>Wheels</h2>
 
-<figure *ngFor="let wheel of wheels; let i = index">
-  <button id="wheel-{{ wheel?.id }}" (click)="changeChoice(wheel?.id, wheel?.price, wheel?.label)">
-    <img class="wheel-img" id="wheel-img-{{ wheel?.id }}" src="../../assets/images/wheels/{{ wheel?.id }}.png"
-      alt="{{ wheel?.label }} Wheels" [ngClass]="{'not-selected': i > 0, 'selected': i === 0}">
-  </button>
-  <figcaption id="wheel-desc-{{ wheel?.id }}" [ngClass]="{'not-show': i > 0, 'show': i === 0}">
-    <p>{{ wheel?.label }}</p>
-    <p>{{ wheel?.price > 0 ? '+' + (wheel?.price | currency) : 'Included' }}</p>
-  </figcaption>
-</figure>
+ 
+    <figure *ngFor="let wheel of wheels; let i = index">
+      <button id="wheel-{{ wheel?.id }}" (click)="changeChoice(wheel?.id, wheel?.price, wheel?.label)">
+        <img class="wheel-img" id="wheel-img-{{ wheel?.id }}" src="../../assets/images/wheels/{{ wheel?.id }}.png"
+          alt="{{ wheel?.label }} Wheels" [ngClass]="{'not-selected': i > 0, 'selected': i === 0}">
+      </button>
+      <figcaption id="wheel-desc-{{ wheel?.id }}" [ngClass]="{'not-show': i > 0, 'show': i === 0}">
+        <p>{{ wheel?.label }}</p>
+        <p>{{ wheel?.price > 0 ? '+' + (wheel?.price | currency) : 'Included' }}</p>
+      </figcaption>
+    </figure>
+
+
+</div>
+
 
 <app-footer [nextPage]="summaryLink" [newWheelImage]="wheelImage" [newWheelPrice]="wheelPrice"
   [newColorImage]="defaultColorImage" [newColorPrice]="defaultColorPrice" [newEnginePrice]="defaultEnginePrice"
