@@ -35,6 +35,7 @@ export class EngineComponent implements OnInit {
     this.showEnginePrice(engine.price, engine.id);
     this.updateFooter(engine.price, engine.kwh, engine.type);
     this.updateSummary(engine.kwh, engine.type, engine.range, engine.price);
+    this.enableEngine(engine.id);
   }
 
   private callListEngines(): void {
@@ -45,6 +46,9 @@ export class EngineComponent implements OnInit {
             this.engines = resp.engine.items;
             this.imageURL = `../../assets/images/engines/${resp.engine.items[0].id}.png`;
             this.engineModel = `${resp.engine.items[0].kwh} ${resp.engine.items[0].type}`;
+
+            this.enableEngine(resp.engine.items[0].id);
+
             this.updateFooter(resp.engine.items[0].price, resp.engine.items[0].kwh, resp.engine.items[0].type);
             this.updateSummary(resp.engine.items[0].kwh, resp.engine.items[0].type, resp.engine.items[0].range, resp.engine.items[0].price);
           }
@@ -83,6 +87,39 @@ export class EngineComponent implements OnInit {
   private updateSummary(kwh: number, type: string, range: number, price: number): void {
     const engineName = `${kwh} ${type} - ${kwh} KWh - ${range} miles range`;
     this.summaryService.updateValues(engineName, price, null, null, null, null, null);
+  }
+
+  private enableEngine(id: number): void {
+    let el = document.querySelectorAll('.text') as NodeListOf<HTMLElement>;
+    if (el.length === 0) {
+      setTimeout(() => {
+        this.addClass('selected', `line-${id}`);
+        this.removeClass('not-selected', `line-${id}`);
+      }, 200);
+    } else {
+      el.forEach((item) => {
+        console.log('item.id', item.id);
+        if (item.id === `line-${id}`) {
+          this.addClass('selected', `line-${id}`);
+          this.removeClass('not-selected', `line-${id}`);
+        } else {
+          this.addClass('not-selected', item.id);
+          this.removeClass('selected', item.id);
+        }
+      });
+    }
+  }
+
+  private addClass(classCss: string, field: string): void {
+    console.log('field', field);
+    const element = document.getElementById(field) as HTMLElement;
+    console.log('element', element);
+    element.classList.add(classCss);
+  }
+
+  private removeClass(classCss: string, field: string): void {
+    const element = document.getElementById(field) as HTMLElement;
+    element.classList.remove(classCss);
   }
 
 }

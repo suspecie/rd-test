@@ -1,17 +1,27 @@
+<h2>Engine</h2>
 
-  <h2>Engine</h2>
-  
-  <img [src]="imageURL" alt="This is representative image of the engine." *ngIf="imageURL">
-  <table cellspacing="0">
-    <tr *ngFor="let engine of engines; let idx = index" (click)="changeChoice(engine)">
-      <td>{{ engine?.kwh }} {{ engine?.type }}</td>
-      <td> {{ engine?.kwh }} kwh</td>
-      <td>{{ engine?.range }} miles range</td>
-      <td>
-        <input type="radio" id="engine-{{ engine?.id }}" name="engine" value="{{ engine?.id }}" [checked]="(idx === 0)">
-        <p class="price not-show-price" id="price-{{ engine?.id }}">+{{ engine?.price | currency }}</p>
-      </td>
-    </tr>
-  </table>
+<img [src]="imageURL" alt="This is representative image of the engine." *ngIf="imageURL">
+<table cellspacing="0">
+  <tr *ngFor="let engine of engines; let idx = index" (click)="changeChoice(engine)" class="text not-selected"  id="line-{{ engine.id }}">
+    <td>
+      <span class="kwh-first">{{ engine?.kwh }} </span>
+      <span class="kwh-type">{{ engine?.type }}</span>
+    </td>
+    <td>
+      <span class="kwh-second">{{ engine?.kwh }}</span>
+      <span class="kwh"> kwh</span>
+    </td>
+    <td>
+      <span class="range-number"> {{ engine?.range }} </span>
+      <span class="range">miles range</span>
+    </td>
+    <td>
+      <input class="radio" type="radio" id="engine-{{ engine?.id }}" name="engine" value="{{ engine?.id }}"
+        [checked]="(idx === 0)"><span class="customRadio"></span>
+      <p class="price not-show-price" id="price-{{ engine?.id }}">+{{ engine?.price | currency }}</p>
+    </td>
+  </tr>
 
-  <app-footer [nextPage]="colorLink" [newEnginePrice]="enginePrice" [newEngineModel]="engineModel"></app-footer>
+</table>
+
+<app-footer [nextPage]="colorLink" [newEnginePrice]="enginePrice" [newEngineModel]="engineModel"></app-footer>

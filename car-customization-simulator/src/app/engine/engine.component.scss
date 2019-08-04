@@ -14,16 +14,110 @@ img {
   order: 8;
   transform: rotate(-90deg);
   width: 50%;
-  margin-left: 25%;
+  margin: -90px 0 -110px 25%;
 }
 
 table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 40px;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 40px;
 
-    tr {
-        background-color: $light-grey;
-        line-height: 75px;
+  tr {
+    background-color: $light-grey;
+    line-height: 45px;
+  }
+
+  tr.not-selected {
+    td {
+      span {
+        color: $grey;
+      }
     }
+  }
+
+  tr.selected {
+    td {
+      span {
+        color: $blue;
+      }
+    }
+    td:first-child {
+      span:last-child {
+        color: $red;
+      }
+    }
+  }
+
+  td {
+    padding: 10px;
+
+    p {
+      position: absolute;
+      right: 20px;
+      color: $red;
+    }
+
+    .kwh-first {
+      font-weight: 300;
+      font-size: 22px;
+      letter-spacing: 1.83px;
+    }
+
+    .kwh-type {
+      font-weight: 500;
+      font-size: 22px;
+      letter-spacing: 1.83px;
+    }
+
+    .kwh-second,
+    .range-number {
+      font-weight: 500;
+      letter-spacing: 2.52px;
+    }
+
+    .kwh,
+    .range {
+      font-weight: 300;
+    }
+
+    input[type="radio"] {
+      width: 15px;
+      height: 15px;
+      margin: 0;
+    }
+
+    input[type="radio"]+span.customRadio {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background-color: white;
+      margin: 0 0 0 -16px;
+      border-radius: 50%;
+      box-shadow: 0 0 3px -1px rgba(0, 0, 0, 0.8);
+      pointer-events: none;
+    }
+
+    input[type="radio"]+span.customRadio::after {
+      content: '.';
+      color: transparent;
+      position: absolute;
+      display: block;
+      width: 2px;
+      height: 2px;
+      margin: 7px 0 0 7px;
+      opacity: 0.6;
+      border-radius: 50%;
+      transition: .2s;
+    }
+
+    input[type="radio"]:checked+span.customRadio::after {
+      width: 16px;
+      height: 16px;
+      margin: 0;
+      opacity: 1;
+      background-color: $red;
+      box-shadow: inset 0 0 2px $red;
+    }
+
+  }
 }
