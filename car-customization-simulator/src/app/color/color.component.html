@@ -1,19 +1,27 @@
-<figure>
+<div class="container">
+
+  <h2>Color</h2>
+
+  <h3>{{ description }}</h3>
+
+
+  <figure>
     <img [src]="urlCarImage" alt="This is representative image of the car with color choice.">
     <figcaption>
-        <p>{{ colorName }}</p>
-        <p>{{ colorPrice > 0 ? '+' + (colorPrice | currency) : 'Included' }}</p>
+      <p>{{ colorName }}</p>
+      <p>{{ colorPrice > 0 ? '+' + (colorPrice | currency) : 'Included' }}</p>
     </figcaption>
-</figure>
+  </figure>
+
+  <div id="button">
+    <button [ngClass]="{'not-button-selected': i > 0, 'button-selected': i === 0}" id="dot-{{ color?.id }}"
+      *ngFor="let color of colors; let i = index" (click)="changeColor(color?.id, color?.label, color?.price)">
+      <img src="../../assets/images/colors/dot-{{ color?.id }}.png" alt="Button to choice color {{ color?.label }}.">
+    </button>
+  </div>
+
+</div>
 
 
-<h2>Color</h2>
-
-<h3>{{ description }}</h3>
-
-<button [ngClass]="{'not-button-selected': i > 0, 'button-selected': i === 0}" id="dot-{{ color?.id }}" *ngFor="let color of colors; let i = index" (click)="changeColor(color?.id, color?.label, color?.price)">
-    <img src="../../assets/images/colors/dot-{{ color?.id }}.png" alt="Button to choice color {{ color?.label }}.">
-</button>
-
-
-<app-footer [nextPage]="wheelsLink" [newColorImage]="colorImage" [newColorPrice]="colorPrice" [newEnginePrice]="defaultEnginePrice" [newEngineModel]="defaultEngineModel"></app-footer>
+<app-footer [nextPage]="wheelsLink" [newColorImage]="colorImage" [newColorPrice]="colorPrice"
+  [newEnginePrice]="defaultEnginePrice" [newEngineModel]="defaultEngineModel"></app-footer>
