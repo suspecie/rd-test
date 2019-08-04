@@ -1,1 +1,78 @@
 @import '../../styles.scss';
+
+img {
+  margin-top: 20px;
+}
+
+#model {
+  width: 100%;
+
+  h2 {
+    letter-spacing: 1.83px;
+
+    span:first-child {
+      font-weight: 300;
+    }
+
+    span:last-child {
+      color: $red;
+      font-weight: 500;
+    }
+  }
+
+  table {
+    width: 100%;
+
+    tr {
+      line-height: 45px;
+    }
+
+    th {
+      text-align: left;
+    }
+
+    td {
+      text-align: end;
+      color: $red;
+    }
+
+    thead {
+      tr {
+        line-height: 75px;
+      }
+
+      td,
+      th {
+        border-bottom: solid 1px $grey;
+      }
+    }
+
+    tfoot {
+
+      tr {
+        line-height: 75px;
+      }
+
+      td,
+      th {
+        border-top: solid 1px $grey;
+        font-size: 26px;
+      }
+    }
+  }
+
+  #button {
+      width: 100%;
+      text-align: center;
+      margin: 15px 0;
+    a {
+        letter-spacing: 9.42px;
+        text-decoration: none;
+        img {
+          width: 20px;
+          margin: 0;
+        }
+    }
+  } 
+  
+}

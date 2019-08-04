@@ -1,1 +1,10 @@
 @import '../../styles.scss';
+
+h3 {
+    font-size: 50px;
+    font-weight: 400;
+    text-align: center;
+    span {
+        color: $red;
+    }
+}

@@ -1,34 +1,43 @@
-<img [src]="urlCarImage" alt="This is representative image of the car with color choice.">
+<div class="container">
+  <img [src]="urlCarImage" alt="This is representative image of the car with color choice.">
 
-<h2>Your Model R</h2>
+  <div id="model">
+    <h2>
+      <span>Your</span>
+      <span> Model</span>
+      <span> R</span>
+    </h2>
 
-<table>
-    <thead>
-      <tr>
-        <th>Starting price</th>
-        <td>{{ defaultPrice | currency }}</td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th>{{ engineName }}</th>
-        <td>{{ enginePrice > 0 ? '+' + (enginePrice | currency) : 'Included' }}</td>
-      </tr>
-      <tr>
-        <th>{{ colorName }}</th>
-        <td>{{ colorPrice > 0 ? '+' + (colorPrice | currency) : 'Included' }}</td>
-      </tr>
-      <tr>
-        <th>{{ wheelName }}</th>
-        <td>{{ wheelPrice > 0 ? '+' + (wheelPrice | currency) : 'Included' }}</td>
-      </tr>
-    </tbody>
-    <tfoot>
+    <table cellspacing="0">
+      <thead>
+        <tr>
+          <th>Starting price</th>
+          <td>{{ defaultPrice | currency }}</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>{{ engineName }}</th>
+          <td>{{ enginePrice > 0 ? '+' + (enginePrice | currency) : 'Included' }}</td>
+        </tr>
+        <tr>
+          <th>{{ colorName }}</th>
+          <td>{{ colorPrice > 0 ? '+' + (colorPrice | currency) : 'Included' }}</td>
+        </tr>
+        <tr>
+          <th>{{ wheelName }}</th>
+          <td>{{ wheelPrice > 0 ? '+' + (wheelPrice | currency) : 'Included' }}</td>
+        </tr>
+      </tbody>
+      <tfoot>
         <tr>
           <th>Final Price</th>
           <td>{{ totalPrice | currency }}</td>
         </tr>
       </tfoot>
-  </table>
-
-<a routerLink="">REBUILD</a>
+    </table>
+    <div id="button">
+      <a routerLink="">REBUILD <img src="../../assets/images/buttons/rebuild.svg" alt="Rebuild button"></a>
+    </div>
+  </div>
+</div>
