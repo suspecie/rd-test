@@ -13,6 +13,7 @@ import { WheelsComponent } from './wheels/wheels.component';
 import { SummaryComponent } from './summary/summary.component';
 import { FooterComponent } from './footer/footer.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    AngularFontAwesomeModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'en-US'}

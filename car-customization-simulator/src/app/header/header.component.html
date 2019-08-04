@@ -1,20 +1,27 @@
-<nav>
-    <a routerLink="">RED|VENTURES</a>
-    <ul>
-        <li>
-            <a routerLink="">Model R</a>
-        </li>
-        <li>
-            <a>Model IQ</a>
-        </li>
-        <li>
-            <a>Model Mobi</a>
-        </li>
-        <li>
-            <a>Model Charlie</a>
-        </li>
-        <li>
-            <a>Model Italy</a>
-        </li>
-    </ul>
+<nav class="container">
+  <a routerLink="">
+    <img src="../../assets/images/home/RV-logo.svg" alt="Red Ventures logo">
+  </a>
+  <ul id="menu">
+    <li>
+      <a routerLink="">Model R</a>
+    </li>
+    <li>
+      <a>Model IQ</a>
+    </li>
+    <li>
+      <a>Model Mobi</a>
+    </li>
+    <li>
+      <a>Model Charlie</a>
+    </li>
+    <li>
+      <a>Model Italy</a>
+    </li>
+    <li>
+      <a class="icon" (click)="openMenuBar()">
+        <fa name="bars"></fa>
+      </a>
+    </li>
+  </ul>
 </nav>

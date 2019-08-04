@@ -1,0 +1,62 @@
+@import '../../styles.scss';
+
+nav {
+  a {
+    order: 1;
+    width: 90%;
+
+    img {
+      width: 159px;
+      height: 23px;
+    }
+  }
+
+  ul {
+    order: 2;
+    width: 10%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      a {
+        display: none;
+        margin-right: 0;
+        text-underline-position: under;
+        color: $grey;
+      }
+
+      a.icon {
+        display: block;
+        text-align: right;
+        position: absolute;
+        right: 20px;
+        top: 30px;
+        font-size: 30px;
+
+      }
+    }
+  }
+
+  ul.responsive {
+    width: 100%;
+    border-bottom: solid $red;
+    padding-top: 16px;
+
+    li {
+      padding: 16px;
+
+      a {
+        display: block;
+      }
+    }
+
+    li:first-child {
+      background-color: $red;
+
+      a {
+        color: $white;
+      }
+    }
+  }
+}

@@ -12,4 +12,13 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  public openMenuBar(): void {
+    const element = document.getElementById('menu') as HTMLElement;
+    if (element.classList.contains('responsive')) {
+      element.classList.remove('responsive');
+    } else {
+      element.classList.add('responsive');
+    }
+  }
+
 }

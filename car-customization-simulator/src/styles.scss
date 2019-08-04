@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Saira+Condensed:300,400,50');
+
+$red: #ab1725;
+$blue: #0f1c2d;
+$grey: #a8a8a8;
+$white: #fff;
+
+* {
+    font-family: 'Saira Condensed', sans-serif;
+    font-weight: 400;
+    box-sizing: border-box;
+    color: $blue;
+    letter-spacing: 0.89px;
+}
+
+body {
+    margin: 30px 20px;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
