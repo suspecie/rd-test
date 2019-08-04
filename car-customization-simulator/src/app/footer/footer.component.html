@@ -5,8 +5,12 @@
   </div>
   <p id="model-r"> Model R</p>
   <p id="engine-model">{{ newEngineModel }}</p>
-  <img id="color-image" [src]="newColorImage" alt="Miniature of the chosen color" *ngIf="newColorImage">
-  <img id="wheel-image" [src]="newWheelImage" alt="Miniature of the chosen wheel" *ngIf="newWheelImage">
+  <div class="img">
+    <img id="color-image" [src]="newColorImage" alt="Miniature of the chosen color" *ngIf="newColorImage">
+  </div>
+  <div class="img">
+    <img id="wheel-image" [src]="newWheelImage" alt="Miniature of the chosen wheel" *ngIf="newWheelImage">
+  </div>
   <div id="button">
     <a routerLink="{{ nextPage }}">next <img src="../../assets/images/buttons/arrow.svg" alt="Button Next Page"></a>
   </div>
