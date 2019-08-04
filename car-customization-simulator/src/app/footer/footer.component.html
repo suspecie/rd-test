@@ -1,8 +1,13 @@
-<p>Total</p>
-<p>{{ totalPrice | currency }}</p>
-<p> Model R</p>
-<p>{{ newEngineModel }}</p>
-<img [src]="newColorImage" alt="Miniature of the chosen color" *ngIf="newColorImage">
-<img [src]="newWheelImage" alt="Miniature of the chosen wheel" *ngIf="newWheelImage">
-
-<a routerLink="{{ nextPage }}">Next</a>
+<div class="container">
+  <div id="total">
+    <p id="total-title">Total</p>
+    <p id="total-price">{{ totalPrice | currency }}</p>
+  </div>
+  <p id="model-r"> Model R</p>
+  <p id="engine-model">{{ newEngineModel }}</p>
+  <img id="color-image" [src]="newColorImage" alt="Miniature of the chosen color" *ngIf="newColorImage">
+  <img id="wheel-image" [src]="newWheelImage" alt="Miniature of the chosen wheel" *ngIf="newWheelImage">
+  <div id="button">
+    <a routerLink="{{ nextPage }}">next <img src="../../assets/images/buttons/arrow.svg" alt="Button Next Page"></a>
+  </div>
+</div>
