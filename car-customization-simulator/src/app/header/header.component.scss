@@ -60,3 +60,75 @@ nav {
     }
   }
 }
+
+@media screen and (min-width: 768px) {
+  nav {
+    a {
+      width: 30%;
+    }
+
+    ul {
+      width: 70%;
+      display: inline-flex;
+
+      li {
+        padding: 0;
+        margin-right: 40px;
+
+        a {
+          display: block;
+          width: 100%;
+
+        }
+
+        a.icon {
+          display: none;
+        }
+      }
+
+      li:nth-child(5) {
+          margin-right: 0;
+      }
+
+      li:last-child {
+        margin-right: 0;
+    }
+    }
+
+    li:first-child {
+      background-color: initial;
+
+      a:first-child {
+        color: $blue;
+        text-decoration-color: $red;
+        text-underline-position: under;
+      }
+    }
+
+    ul.responsive {
+      border-bottom: none;
+      width: 70%;
+      padding: 0;
+
+
+      li {
+        padding: 0;
+      }
+
+      li:first-child {
+        background-color: initial;
+
+        a:first-child {
+          color: $blue;
+          text-decoration-color: $red;
+          text-underline-position: under;
+          cursor: pointer;
+        }
+      }
+
+    }
+
+
+  }
+
+}
