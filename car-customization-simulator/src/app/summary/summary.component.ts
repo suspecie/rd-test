@@ -74,9 +74,7 @@ export class SummaryComponent implements OnInit {
       this.wheelName = lastSummaryValues.wheelName;
       this.wheelPrice = lastSummaryValues.wheelPrice;
       this.urlCarImage = `../../assets/images/summary/final-${lastSummaryValues.chosenColor}.png`;
-      console.log('urlcarImage', this.urlCarImage);
       this.updatePrice();
-      console.log('lastSummaryValues', lastSummaryValues);
     }
   }
 

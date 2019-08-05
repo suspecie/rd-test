@@ -44,7 +44,6 @@ export class FooterComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
-    console.log('newprice update', this.newEnginePrice);
     this.updatePrice();
 
   }
@@ -57,7 +56,6 @@ export class FooterComponent implements OnInit, OnChanges {
             this.defaultPrice = resp.price;
             this.updatePrice();
           }
-          console.log('defaultprice', this.defaultPrice);
         }
       );
   }
@@ -71,16 +69,11 @@ export class FooterComponent implements OnInit, OnChanges {
       this.newColorPrice = lastFooterValues.colorPrice;
       this.newWheelImage = lastFooterValues.wheelImage;
       this.newWheelPrice = lastFooterValues.wheelPrice;
-      console.log('newWheelPrice', lastFooterValues.wheelPrice);
     }
   }
 
   private updatePrice() {
     this.totalPrice = this.defaultPrice + this.newEnginePrice + this.newColorPrice + this.newWheelPrice;
-    console.log('engineprice', this.newEnginePrice);
-    console.log('colorprice', this.newColorPrice);
-    console.log('wheelprice', this.newWheelPrice);
-    console.log('totalprice', this.totalPrice);
   }
 
 }

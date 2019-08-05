@@ -41,7 +41,6 @@ export class CustomizationService {
   }
 
   clearCache() {
-    console.log('entrei no clearCache');
     this.configs = null;
   }
 }

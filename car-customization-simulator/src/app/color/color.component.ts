@@ -65,7 +65,6 @@ export class ColorComponent implements OnInit {
 
   private updateFooter(): void {
     const lastFooterValues = this.footerService.getValues();
-    console.log('lastFooterValues', lastFooterValues);
     if (lastFooterValues) {
       this.footerService
         .updateValues(

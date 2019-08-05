@@ -29,7 +29,6 @@ export class EngineComponent implements OnInit {
   }
 
   public changeChoice(engine: ItemsEngine): void {
-    console.log('changeChoice', engine);
     this.changeEngineImage(engine.id);
     this.selectEngine(engine.id);
     this.showEnginePrice(engine.price, engine.id);
@@ -98,7 +97,6 @@ export class EngineComponent implements OnInit {
       }, 200);
     } else {
       el.forEach((item) => {
-        console.log('item.id', item.id);
         if (item.id === `line-${id}`) {
           this.addClass('selected', `line-${id}`);
           this.removeClass('not-selected', `line-${id}`);
@@ -111,9 +109,7 @@ export class EngineComponent implements OnInit {
   }
 
   private addClass(classCss: string, field: string): void {
-    console.log('field', field);
     const element = document.getElementById(field) as HTMLElement;
-    console.log('element', element);
     element.classList.add(classCss);
   }
 
