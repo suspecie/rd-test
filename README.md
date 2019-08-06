@@ -7,7 +7,6 @@ The test sent by Red Ventures simulates the customization of a car.
   - Angular CLI
   - SCSS
   - TypeScript
-  - 
 
 ## INSTALL
 
